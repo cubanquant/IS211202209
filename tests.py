@@ -43,6 +43,13 @@ class ConversionTest(unittest.TestCase):
         expected = 273.15
         self.assertEqual(result, expected)
 
+        celsius = 0
+        result = convert("Celsius", "Fahrenheit", celsius)
+        expected = 273.15
+        self.assertEqual(result, expected)
+        # repeat for all the rest of the temperature cases
+        # do all the distance conversions
+
 
 if __name__ == "__main__":
     unittest.main()
