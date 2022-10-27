@@ -115,7 +115,7 @@ class Game:
 
 class TimedGame(Game):
 
-    def __init__(self, player1, player2, time_limit):
+    def __init__(self, player1, player2, time_limit=60):
         super().__init__(player1, player2)
         self.start_time = datetime.datetime.now()
         self.time_limit = time_limit
@@ -123,6 +123,7 @@ class TimedGame(Game):
     def check_time(self, time_now):
         """
         Check for the time
+
         :return: True if time expired
         """
         return (time_now - self.start_time).total_seconds() > self.time_limit
@@ -138,7 +139,11 @@ class TimedGame(Game):
             time_flag = self.check_time(datetime.datetime.now())
 
         # check if game end because of time
-        # show the winner
+        if time_flag:
+            print("Game timeout - No Winners")
+        else:
+            # show the winner
+            pass
 
 
 def make_player(player_type, player_name):
@@ -158,9 +163,11 @@ def make_player(player_type, player_name):
 
 
 if __name__ == '__main__':
+    # use argparse (like in HW2 and HW3) and determine the time game
     p1 = make_player('h', "John")
     p2 = make_player('c', "HAL")
 
-    pig_game = Game(p1, p2)
+    # pig_game = Game(p1, p2)
+    pig_game = TimedGame(p1, p2)
     pig_game.play_game()
 
