@@ -65,7 +65,7 @@ class ComputerPlayer(Player):
         """
         turn_total = 0
         scratch = False
-        while turn_total >= min(self.total, 100 - self.total):
+        while turn_total < min(25, 100 - self.total):
             die = throw_the_die()
             if die == 1:
                 # scratch - let the user know!
