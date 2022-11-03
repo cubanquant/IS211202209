@@ -10,7 +10,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def hello_world():
-    return 'Hello, World!'
+    return render_template('helloform.html')
 
 
 @app.route('/morehello')
@@ -22,11 +22,6 @@ def more_hello():
 @app.route('/hello/<username>')
 def helloname(username=None):
     return render_template('hellotemplate.html', name=username)
-
-
-@app.route('/helloform')
-def hello_form():
-    return render_template('helloform.html')
 
 
 @app.route('/helloaction', methods=['POST', 'GET'])
